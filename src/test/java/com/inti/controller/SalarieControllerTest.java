@@ -59,6 +59,7 @@ public class SalarieControllerTest {
 	@DisplayName("Test de suppression d'un salarié")
 	public void deleteSalarie() throws Exception
 	{
+		// commentaire qc
 		mock.perform(get("/deleteSalarie/2"))
 		.andExpect(status().is3xxRedirection())
 		.andExpect(redirectedUrl("/listeSalarie"))
