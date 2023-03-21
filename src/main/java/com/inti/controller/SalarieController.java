@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.inti.model.Salarie;
@@ -36,6 +37,14 @@ public class SalarieController {
 		m.addAttribute("listeS", isr.findAll());
 		
 		return "listeSalarie";
+	}
+	
+	@GetMapping("deleteSalarie/{id}")
+	public String deleteSalarie(@PathVariable("id") int id)
+	{
+		isr.deleteById(id);
+		
+		return "redirect:/listeSalarie";
 	}
 
 }

@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
@@ -51,6 +52,16 @@ public class SalarieControllerTest {
 		mock.perform(get("/listeSalarie"))
 		.andExpect(status().isOk())
 		.andExpect(content().string(containsString("Email")))
+		.andDo(print());
+	}
+	
+	@Test
+	@DisplayName("Test de suppression d'un salarié")
+	public void deleteSalarie() throws Exception
+	{
+		mock.perform(get("/deleteSalarie/2"))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(redirectedUrl("/listeSalarie"))
 		.andDo(print());
 	}
 }
