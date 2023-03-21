@@ -1,6 +1,7 @@
 package com.inti.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -11,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.inti.model.Salarie;
 import com.inti.repository.ISalarieRepository;
 
 @WebMvcTest(SalarieController.class)
@@ -28,6 +30,15 @@ public class SalarieControllerTest {
 	{
 		mock.perform(get("/inscription"))
 		.andExpect(status().isOk())
+		.andDo(print());
+	}
+	
+	@Test
+	@DisplayName("Test d'enregistrement d'un salarié")
+	public void enregistrementSalarie() throws Exception
+	{
+		mock.perform(post("/inscription").sessionAttr("salarie", new Salarie("Dupont", "Jean", "test@tst.fr")))
+		.andExpect(status().is3xxRedirection())
 		.andDo(print());
 	}
 }
