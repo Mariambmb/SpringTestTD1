@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.inti.model.Salarie;
 import com.inti.repository.ISalarieRepository;
 
+// Classe controller
 @Controller
 public class SalarieController {
 	
