@@ -104,7 +104,7 @@ public class SalarieRepositoryTest {
 	@Test
 	public void getSalarieByNom()
 	{
-		// Given 
+		
 		Salarie s3 = salarieRepository.save(new Salarie("Dupont", "Sophie", "test@te.fr"));
 		
 		// When
