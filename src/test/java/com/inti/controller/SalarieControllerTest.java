@@ -64,4 +64,6 @@ public class SalarieControllerTest {
 		.andExpect(redirectedUrl("/listeSalarie"))
 		.andDo(print());
 	}
+	
+	// Ecrire les autres tests
 }
