@@ -1,8 +1,10 @@
 package com.inti.controller;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
@@ -39,6 +41,16 @@ public class SalarieControllerTest {
 	{
 		mock.perform(post("/inscription").sessionAttr("salarie", new Salarie("Dupont", "Jean", "test@tst.fr")))
 		.andExpect(status().is3xxRedirection())
+		.andDo(print());
+	}
+	
+	@Test
+	@DisplayName("Test d'affichage de tous les salariés")
+	public void getAllSalarie() throws Exception
+	{
+		mock.perform(get("/listeSalarie"))
+		.andExpect(status().isOk())
+		.andExpect(content().string(containsString("Email")))
 		.andDo(print());
 	}
 }
