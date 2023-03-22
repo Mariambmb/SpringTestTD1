@@ -12,6 +12,7 @@ import com.inti.model.Salarie;
 import com.inti.repository.ISalarieRepository;
 
 // Classe controller
+//commentaire
 @Controller
 public class SalarieController {
 	
